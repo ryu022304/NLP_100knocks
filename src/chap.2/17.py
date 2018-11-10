@@ -16,5 +16,5 @@ with open(opath+'col1.txt', encoding='utf-8') as f:
         for x in x_list:
             fw.write(x)
 
-cmd = "sort "+opath+"col1.txt | uniq > "+opath+"17-2.txt"
+cmd = "sort -u "+opath+"col1.txt | uniq > "+opath+"17-2.txt"
 subprocess.check_output(cmd, shell=True)
