@@ -1,9 +1,13 @@
-# "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
-#という文を単語に分解し，各単語の（アルファベットの）文字数を先頭から出現順に並べたリストを作成せよ．
+# 「パトカー」＋「タクシー」の文字を先頭から交互に連結して文字列
+# 「パタトクカシーー」を得よ．
+import sys, io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-str = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
+str = 'パトカー'
+str2 = 'タクシー'
+res = ''
 
-words = [x.strip('.,') for x in str.split()]
-word_len = [len(x) for x in words]
-print(words)
-print(word_len)
+for p,t in zip(str, str2):
+    res += p + t
+
+print(res)
