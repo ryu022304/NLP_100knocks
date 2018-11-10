@@ -5,17 +5,25 @@ import pandas as pd
 import subprocess
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-path = './data/'
+opath = '../../data/output/'
 
-data1 = pd.read_csv(path+"col1.txt")
-data2 = pd.read_csv(path+"col2.txt")
+data1 = pd.read_csv(opath+"col1.txt")
+data2 = pd.read_csv(opath+"col2.txt")
 
 data_res = pd.concat([data1, data2], axis=1)
 
-data_res.to_csv(path+"col3.txt",index=False, sep='\t', encoding="utf-8")
+data_res.to_csv(opath+"col3.txt",index=False, sep='\t', encoding="utf-8")
 
-cmd = "paste -d '\t' ./data/col1.txt ./data/col2.txt > ./data/col3-2.txt"
+cmd = "paste -d '\t' "+opath+"col1.txt "+opath+"col2.txt > "+opath+"col3-2.txt"
 subprocess.check_output(cmd, shell=True)
 
-subprocess.check_output("diff ./data/col3.txt ./data/col3-2.txt",
- shell=True)
+text = ""
+text2 = ""
+with open(opath+'col3.txt', encoding='utf-8') as f:
+    for line in f:
+        text += line
+with open(opath+'col3-2.txt', encoding='utf-8') as f:
+    for line in f:
+        text2 += line
+if text == text2:
+    print('OK')
