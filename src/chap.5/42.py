@@ -64,8 +64,6 @@ def makeChunk():
 
 chunks = makeChunk()
 
-chunks = makeChunk()
-
 list_kakari = []
 for c in chunks:
     for m in c:
