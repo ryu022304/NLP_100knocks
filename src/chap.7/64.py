@@ -10,15 +10,20 @@ ipath = '../../data/input/'
 opath = '../../data/output/'
 
 client = MongoClient('localhost', 27017)
-db = client['test-database']
-collection = db['test-collection']
+db = client['test_database']
+collection = db['test_collection']
 
-'''
+
 with gzip.open(ipath+"artist.json.gz", "rt", "utf_8") as f:
-    for line in f:
+    buf = []
+    for i,line in enumerate(f):
         obj = json.loads(line)
-        collection.insert_one(obj)
-'''
+        buf.append(obj)
+        if i % 10000 == 0:
+            collection.insert_many(buf)
+            buf = []
+    collection.insert_many(buf)
+
 collection.create_index('name')
 collection.create_index('aliases.name')
 collection.create_index('tags.value')

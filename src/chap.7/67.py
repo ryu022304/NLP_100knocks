@@ -6,8 +6,8 @@ from pymongo import MongoClient
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 client = MongoClient('localhost', 27017)
-db = client['test-database']
-collection = db['test-collection']
+db = client['test_database']
+collection = db['test_collection']
 
 print("検索したい別名を入力：")
 name = input()

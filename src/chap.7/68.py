@@ -8,8 +8,8 @@ from pymongo import MongoClient
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 client = MongoClient('localhost', 27017)
-db = client['test-database']
-collection = db['test-collection']
+db = client['test_database']
+collection = db['test_collection']
 
 for data in collection.find({"tags.value": "dance"}).sort("rating.value",pymongo.DESCENDING).limit(10):
     pprint.pprint(data)

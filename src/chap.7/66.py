@@ -3,9 +3,8 @@
 # インタラクティブシェル
 '''
 mongodb
-use test-database
-db['test-collection'].count({"area": "Japan"})
-# db.test-collection.count()だとコレクション名にハイフンが入ってしまっているのでエラーになる
+use test_database
+db['test_collection'].count({"area": "Japan"})
 '''
 
 # プログラム
@@ -16,7 +15,7 @@ from pymongo import MongoClient
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 client = MongoClient('localhost', 27017)
-db = client['test-database']
-collection = db['test-collection']
+db = client['test_database']
+collection = db['test_collection']
 
 pprint.pprint(collection.count({"area": "Japan"}))
