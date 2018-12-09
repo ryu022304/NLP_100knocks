@@ -20,4 +20,4 @@ with bz2.open(ipath+'enwiki-20150112-400-r100-10576.txt.bz2', 'rt') as fi, open(
                 tokens.append(str(word).strip('.,!?;:()[]\'"'))
         else:
             continue
-        fw.write(' '.join(tokens))
+        fw.write(' '.join(tokens)+'\n')
