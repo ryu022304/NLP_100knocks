@@ -15,7 +15,7 @@ func_t_c = []
 func_t_asta = []
 func_asta_c = []
 
-with open(opath+'82.txt', encoding='utf-8') as f:
+with open(opath+'82.txt', encoding='utf-8') as f,open(opath+'83_tc.txt',mode='a', encoding='utf-8') as ftc,open(opath+'83_ta.txt', mode='a',encoding='utf-8') as fta,open(opath+'83_ac.txt', mode='a',encoding='utf-8') as fac:
     lines = f.readlines()
     for i,line in enumerate(lines,1):
         words = line.strip('\n').split('\t')
@@ -29,7 +29,10 @@ with open(opath+'82.txt', encoding='utf-8') as f:
     count_f_a_c = collections.Counter(func_asta_c)
     N = i
 
-    print(count_f_t_c)
-    print(count_f_t_a)
-    print(count_f_a_c)
+    for k,v in count_f_t_c.most_common():
+        ftc.write('{}\t{}\n'.format(k,v))
+    for k,v in count_f_t_a.most_common():
+        fta.write('{}\t{}\n'.format(k,v))
+    for k,v in count_f_a_c.most_common():
+        fac.write('{}\t{}\n'.format(k,v))
     print(str(N))
