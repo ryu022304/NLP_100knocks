@@ -11,6 +11,8 @@ import pprint
 import collections
 import math
 import numpy as np
+import pickle
+from scipy import sparse, io
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -35,7 +37,8 @@ with open(opath+'83_tc.txt', encoding='utf-8') as ftc,open(opath+'83_ta.txt', en
         dic_ac[word] = int(num)
         index_ac[word] = j
 
-    Xtc = np.zeros((len(dic_ta),len(dic_ac)))
+    #Xtc = np.zeros((len(dic_ta),len(dic_ac)))
+    Xtc = sparse.lil_matrix((len(dic_ta), len(dic_ac)))
     N = int(fn.readline())
 
     lines = ftc.readlines()
@@ -45,11 +48,10 @@ with open(opath+'83_tc.txt', encoding='utf-8') as ftc,open(opath+'83_ta.txt', en
         word_c = words[1]
         num_tc = int(words[2])
 
-        if num_tc < 10:
-            Xtc[index_ta[word_t]][index_ac[word_c]] = 0
-        else:
+        if num_tc >= 10:
             PPMI = max(math.log(N*num_tc / (dic_ta[word_t]* dic_ac[word_c])), 0)
-            Xtc[index_ta[word_t]][index_ac[word_c]] = PPMI
-    index = np.where(Xtc != 0)
+            Xtc[index_ta[word_t],index_ac[word_c]] = PPMI
 
-    #np.save(opath+'84',Xtc[index])
+    io.savemat(opath+'84.mat', {'Xtc': Xtc})
+    with open(opath+'84.txt', 'wb') as f:
+        pickle.dump(index_ta, f)
