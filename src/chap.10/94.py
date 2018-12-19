@@ -34,13 +34,14 @@ with open(ipath+'wordsim353/combined.csv',encoding='utf-8') as f,open(opath+'94_
 
     lines = f.readlines()
     for line in lines:
-        words = line.split(',')
+        words = line[:-1].split(',')
+        print(words)
         try:
-            #sim_85 = sim_vector(words[0],words[1])
-            sim_90 = sim_word2vec(words[0],words[1])
-            #fo_85.write('{},{},{}\n'.format(words[0],words[1],str(sim_85)))
-            fo_90.write('{},{},{}\n'.format(words[0],words[1],str(sim_90)))
+            sim_85 = sim_vector(words[0],words[1])
+            #sim_90 = sim_word2vec(words[0],words[1])
+            fo_85.write('{},{},{},{}\n'.format(words[0],words[1],words[2],str(sim_85)))
+            #fo_90.write('{},{},{},{}\n'.format(words[0],words[1],words[2],str(sim_90)))
             print(line)
         except KeyError:
-            #fo_85.write('{},{},{}\n'.format(words[0],words[1],str(-1)))
-            fo_90.write('{},{},{}\n'.format(words[0],words[1],str(-1)))
+            fo_85.write('{},{},{},{}\n'.format(words[0],words[1],words[2],str(-1)))
+            #fo_90.write('{},{},{},{}\n'.format(words[0],words[1],words[2],str(-1)))
