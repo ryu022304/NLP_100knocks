@@ -24,4 +24,7 @@ with open(ipath+'country.csv',encoding='utf-8') as fc:
         country = line.split(',')[1].strip('\n"').replace(' ','_')
 
         if country in model_vec:
-            print(model_vec[country])
+            country_list.append(model_vec[country])
+
+with open(opath+'96.txt', 'wb') as f:
+    pickle.dump(country_list, f)
