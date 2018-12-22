@@ -28,5 +28,16 @@ with open(opath+'96_name.txt', 'rb') as f:
 
 tsne = TSNE(n_components=2, random_state=0).fit_transform(country_list)
 
-plt.plot(tsne[:, 0], tsne[:, 1], '.')
+kmean = KMeans(n_clusters=5).fit_predict(country_list)
+
+'''
+plt.plot(tsne[:, 0], tsne[:, 1], country_name_list)
+plt.show()
+'''
+fig, ax = plt.subplots()
+cmap = plt.get_cmap('Set1')
+for index, label in enumerate(country_name_list):
+    cval = cmap(kmean[index] / 4)
+    ax.scatter(tsne[index, 0], tsne[index, 1], marker='.', color=cval)
+    ax.annotate(label, xy=(tsne[index, 0], tsne[index, 1]), color=cval)
 plt.show()
