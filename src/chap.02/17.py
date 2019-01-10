@@ -1,8 +1,4 @@
 # 1列目の文字列の種類（異なる文字列の集合）を求めよ．確認にはsort, uniqコマンドを用いよ．
-import sys, io, os
-import subprocess
-import pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -16,5 +12,12 @@ with open(opath+'col1.txt', encoding='utf-8') as f:
         for x in x_list:
             fw.write(x)
 
-cmd = "sort -u "+opath+"col1.txt | uniq > "+opath+"17-2.txt"
-subprocess.check_output(cmd, shell=True)
+"""
+確認コマンドと結果
+$ sort -u ../../data/output/col1.txt | uniq | diff - ../../data/output/17.txt
+1a2
+> 和歌山県
+12d12
+< 和歌山県
+と出力されるが種類は変わらないので問題ない
+"""
