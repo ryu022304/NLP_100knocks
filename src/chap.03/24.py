@@ -1,7 +1,5 @@
 # 記事から参照されているメディアファイルをすべて抜き出せ．
-import sys, io, os
 import gzip, json, pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -12,6 +10,7 @@ with gzip.open(ipath+"jawiki-country.json.gz", "rt", "utf_8") as f:
         obj = json.loads(line)
         if obj['title'] == 'イギリス':
             text = obj['text']
+            break
 
 file_list = []
 for line in text.split('\n'):

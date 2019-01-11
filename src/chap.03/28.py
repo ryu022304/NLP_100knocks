@@ -1,8 +1,7 @@
 # 27の処理に加えて，テンプレートの値からMediaWikiマークアップを可能な限り除去し，
 # 国の基本情報を整形せよ．
-import sys, io, os, re
+import re
 import gzip, json, pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -13,6 +12,7 @@ with gzip.open(ipath+"jawiki-country.json.gz", "rt", "utf_8") as f:
         obj = json.loads(line)
         if obj['title'] == 'イギリス':
             text = obj['text']
+            break
 
 info_dict = {}
 flag_info = False
@@ -24,7 +24,6 @@ for line in text.split('\n'):
             val = re.sub(r'[]]]','',val)
             val = re.sub(r'[*]','',val)
             info_dict[key] = info_dict[key]+val
-            #print(info_dict[key])
         elif line[0] == '|':
             middle = line.index('=')
             key = line[1:middle].strip()

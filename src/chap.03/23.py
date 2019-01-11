@@ -1,8 +1,5 @@
 # 記事中に含まれるセクション名とそのレベル（例えば"== セクション名 =="なら1）を表示せよ．
-
-import sys, io, os
 import gzip, json, pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -13,6 +10,7 @@ with gzip.open(ipath+"jawiki-country.json.gz", "rt", "utf_8") as f:
         obj = json.loads(line)
         if obj['title'] == 'イギリス':
             text = obj['text']
+            break
 
 section_list = []
 for line in text.split('\n'):
