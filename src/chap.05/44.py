@@ -89,4 +89,4 @@ def save_graph(dot: str, file_name: str) -> None:
     g.write_jpeg(file_name, prog='dot')
 
 for idx in range(3):
-    save_graph(dots[idx], opath+'graph{}.jpg'.format(idx))
+    save_graph(dots[idx], opath+'44_graph{}.jpg'.format(idx))
