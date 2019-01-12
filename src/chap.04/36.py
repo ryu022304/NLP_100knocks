@@ -1,9 +1,7 @@
 # 文章中に出現する単語とその出現頻度を求め，出現頻度の高い順に並べよ．
-import sys, io, os, re
 import MeCab
 import pprint
 import collections
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

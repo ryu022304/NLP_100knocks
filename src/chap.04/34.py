@@ -1,8 +1,6 @@
 # 2つの名詞が「の」で連結されている名詞句を抽出せよ．
-import sys, io, os, re
 import MeCab
 import pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -32,6 +30,7 @@ with open(opath+'neko.txt.mecab', encoding='utf-8') as f:
 noun_list = []
 
 for i in range(1,len(list_neko)-1):
+    # 「の」の前後を見て、名詞だったらリストに追加
     if list_neko[i]['base'] == "の" and list_neko[i-1]['pos'] == "名詞" and list_neko[i+1]['pos'] == "名詞":
         noun_list.append(list_neko[i-1]['base']+list_neko[i]['base']+list_neko[i+1]['base'])
 

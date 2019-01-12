@@ -1,8 +1,6 @@
 # 名詞の連接（連続して出現する名詞）を最長一致で抽出せよ．
-import sys, io, os, re
 import MeCab
 import pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

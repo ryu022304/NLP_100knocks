@@ -6,10 +6,8 @@
 # ただし，各形態素は表層形（surface），基本形（base），品詞（pos），
 # 品詞細分類1（pos1）をキーとするマッピング型に格納し，1文を形態素（マッピング型）の
 # リストとして表現せよ．第4章の残りの問題では，ここで作ったプログラムを活用せよ．
-import sys, io, os, re
 import MeCab
 import pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
