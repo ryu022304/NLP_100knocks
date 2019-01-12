@@ -1,8 +1,6 @@
 # 空白を単語の区切りとみなし，50の出力を入力として受け取り，1行1単語の形式で出力せよ．
 # ただし，文の終端では空行を出力せよ．
-import sys, io, os, re
-import pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+import re
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

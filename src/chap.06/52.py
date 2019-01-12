@@ -1,10 +1,9 @@
 # 51の出力を入力として受け取り，Porterのステミングアルゴリズムを適用し，
 # 単語と語幹をタブ区切り形式で出力せよ． Pythonでは，Porterのステミングアルゴリズムの
 # 実装としてstemmingモジュールを利用するとよい．
-import sys, io, os, re
+import re
 import pprint
 from nltk.stem.porter import PorterStemmer
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

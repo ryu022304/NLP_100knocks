@@ -3,13 +3,8 @@
 # ・述語: nsubj関係とdobj関係の子（dependant）を持つ単語
 # ・主語: 述語からnsubj関係にある子（dependent）
 # ・目的語: 述語からdobj関係にある子（dependent）
-import sys, io, os, re
-import pprint
 from nltk.stem.porter import PorterStemmer
-import json
-import corenlp
 from pycorenlp import StanfordCoreNLP
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -23,8 +18,6 @@ with open(ipath+'nlp.txt', encoding='utf-8') as f:
     lines = f.readlines()
     for line in lines:
         tokenized_list.append(nlp.annotate(line, properties=prop))
-
-#pprint.pprint(tokenized_list)
 
 deps = []
 dep_list = []
@@ -45,7 +38,6 @@ for line in tokenized_list:
             dep_list.append(dic_dep)
             dic_dep = {}
 
-#pprint.pprint(dep_list)
 for dep in dep_list:
     if len(dep) == 3:
         print('{}\t{}\t{}'.format(dep['shugo'],dep['jutsugo'],dep['mokutekigo']))

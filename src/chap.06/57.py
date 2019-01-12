@@ -2,15 +2,11 @@
 # 有向グラフとして可視化せよ．可視化には，係り受け木をDOT言語に変換し，
 # Graphvizを用いるとよい．また，Pythonから有向グラフを直接的に可視化するには，
 # pydotを使うとよい．
-import sys, io, os, re
 import pprint
 from nltk.stem.porter import PorterStemmer
-import json
 import pydot_ng as pydot
 import pydotplus
-import corenlp
 from pycorenlp import StanfordCoreNLP
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -24,8 +20,6 @@ with open(ipath+'nlp.txt', encoding='utf-8') as f:
     lines = f.readlines()
     for line in lines:
         tokenized_list.append(nlp.annotate(line, properties=prop))
-
-#pprint.pprint(tokenized_list)
 
 dots = []
 edges = []
@@ -44,7 +38,6 @@ for line in tokenized_list:
                     )
             dots.append(edges)
             edges = []
-#pprint.pprint(dots)
 
 def graph_from_edges_ex(edge_list, directed=False):
     pprint.pprint(edge_list)
@@ -69,7 +62,7 @@ def graph_from_edges_ex(edge_list, directed=False):
 
     return graph
 
-def save_graph(dot: str, file_name: str) -> None:
+def save_graph(dot: str, file_name: str):
     g = graph_from_edges_ex(dot, directed=True)
     g.write_png(file_name, prog='dot')
 

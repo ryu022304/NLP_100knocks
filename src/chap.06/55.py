@@ -1,11 +1,7 @@
 # 入力文中の人名をすべて抜き出せ．
-import sys, io, os, re
 import pprint
 from nltk.stem.porter import PorterStemmer
-import json
-import corenlp
 from pycorenlp import StanfordCoreNLP
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -29,4 +25,3 @@ for line in tokenized_list:
                 ner = token['ner']
                 if ner == 'PERSON':
                     print(token['text'])
-#pprint.pprint(tokenized_list)

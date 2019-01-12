@@ -1,13 +1,8 @@
 # Stanford Core NLPの共参照解析の結果に基づき，文中の参照表現（mention）を
 # 代表参照表現（representative mention）に置換せよ．ただし，置換するときは，
 # 「代表参照表現（参照表現）」のように，元の参照表現が分かるように配慮せよ．
-import sys, io, os, re
-import pprint
 from nltk.stem.porter import PorterStemmer
-import json
-import corenlp
 from pycorenlp import StanfordCoreNLP
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -20,8 +15,6 @@ tokenized_list = []
 with open(ipath+'nlp.txt', encoding='utf-8') as f:
     for line in f:
         tokenized_list.append(nlp.annotate(line, properties=prop))
-
-#pprint.pprint(tokenized_list)
 
 display_list = []
 for line in tokenized_list:

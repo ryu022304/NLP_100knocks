@@ -1,9 +1,7 @@
 # 英語のテキスト（nlp.txt）に対して，以下の処理を実行せよ．
 # (. or ; or : or ? or !) → 空白文字 → 英大文字というパターンを文の区切りと見なし，
 # 入力された文書を1行1文の形式で出力せよ．
-import sys, io, os, re
-import pprint
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+import re
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

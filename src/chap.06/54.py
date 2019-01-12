@@ -1,11 +1,6 @@
 # Stanford Core NLPの解析結果XMLを読み込み，単語，レンマ，品詞をタブ区切り形式で出力せよ．
-import sys, io, os, re
-import pprint
 from nltk.stem.porter import PorterStemmer
-import json
-import corenlp
 from pycorenlp import StanfordCoreNLP
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
