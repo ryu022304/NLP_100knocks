@@ -1,12 +1,10 @@
 # 出現頻度が高い10語とその出現頻度をグラフ（例えば棒グラフなど）で表示せよ．
-import sys, io, os, re
 import MeCab
 import pprint
 import collections
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -52,5 +50,5 @@ height = np.array(list_height)
 
 plt.bar(range(10), height, align = "center")
 plt.xticks(range(10),left)
-plt.show()
 plt.savefig(opath+'37.png')
+plt.show()

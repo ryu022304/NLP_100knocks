@@ -1,13 +1,11 @@
 # 単語の出現頻度のヒストグラム（横軸に出現頻度，縦軸に出現頻度をとる
 # 単語の種類数を棒グラフで表したもの）を描け．
-import sys, io, os, re
 import MeCab
 import pprint
 import collections
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -36,9 +34,6 @@ with open(opath+'neko.txt.mecab', encoding='utf-8') as f:
 
 words = [dic['surface'] for dic in list_neko]
 c = collections.Counter(words).most_common()
-ten_words = c[:10]
-
-#pprint.pprint(ten_words)
 
 mpl.rcParams['font.family'] = 'AppleGothic'
 
@@ -50,5 +45,5 @@ for word, num in c:
 
 plt.hist(list_height, bins=50, range=(0,50))
 plt.xlim(xmin=1, xmax=50)
-plt.show()
 plt.savefig(opath+'38.png')
+plt.show()
