@@ -4,9 +4,7 @@
 # さらに，入力テキストのCaboChaの解析結果を読み込み，１文をChunkオブジェクトの
 # リストとして表現し，8文目の文節の文字列と係り先を表示せよ．第5章の残りの問題では，
 # ここで作ったプログラムを活用せよ．
-import sys, io, os, re
 import CaboCha
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

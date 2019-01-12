@@ -11,12 +11,10 @@
 # このプログラムの出力をファイルに保存し，以下の事項をUNIXコマンドを用いて確認せよ．
 # ・コーパス中で頻出する述語と格パターンの組み合わせ
 # ・「する」「見る」「与える」という動詞の格パターン（コーパス中で出現頻度の高い順に並べよ）
-import sys, io, os, re
 import pprint
 import CaboCha
 import pydot
 import pydotplus
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -59,7 +57,7 @@ class Chunk():
         for morph in self.morphs:
             if morph.pos == '助詞':
                 return morph.base
-                
+
     def __str__(self):
         return 'surface:[{}] dst:[{}] srcs:{}'.format(' , '.join([str(morph.surface) for morph in self.morphs]), self.dst, self.srcs)
 
@@ -111,5 +109,5 @@ for c in chunks:
                 list_corpas.append('{}\t{}\n'.format(verb, ' '.join(list_joshi_s)))
 #print(list_corpas)
 
-with open(opath+'corpas.txt.cabocha', mode='w', encoding='utf-8') as of:
-    of.writelines(list_corpas)
+with open(opath+'corpas.txt.cabocha', mode='w', encoding='utf-8') as fo:
+    fo.writelines(list_corpas)

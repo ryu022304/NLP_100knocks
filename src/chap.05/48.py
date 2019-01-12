@@ -4,12 +4,10 @@
 # ・パスの開始文節から終了文節に至るまで，各文節の表現を"->"で連結する
 # 「吾輩はここで始めて人間というものを見た」という文（neko.txt.cabochaの8文目）から，
 # 次のような出力が得られるはずである．
-import sys, io, os, re
 import pprint
 import CaboCha
 import pydot
 import pydotplus
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

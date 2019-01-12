@@ -1,12 +1,10 @@
 # 与えられた文の係り受け木を有向グラフとして可視化せよ．可視化には，
 # 係り受け木をDOT言語に変換し，Graphvizを用いるとよい．
 # また，Pythonから有向グラフを直接的に可視化するには，pydotを使うとよい．
-import sys, io, os, re
 import pprint
 import CaboCha
 import pydot
 import pydotplus
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

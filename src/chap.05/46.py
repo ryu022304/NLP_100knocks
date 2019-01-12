@@ -5,12 +5,10 @@
 # 「吾輩はここで始めて人間というものを見た」という例文（neko.txt.cabochaの8文目）を考える．
 #  この文は「始める」と「見る」の２つの動詞を含み，「始める」に係る文節は「ここで」，
 # 「見る」に係る文節は「吾輩は」と「ものを」と解析された場合は，次のような出力になるはずである．
-import sys, io, os, re
 import pprint
 import CaboCha
 import pydot
 import pydotplus
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -107,5 +105,5 @@ for c in chunks:
                 list_corpas.append('{}\t{}\t{}\n'.format(verb, ' '.join(list_joshi_s), ' '.join(list_setsu)))
 #print(list_corpas)
 
-with open(opath+'corpas02.txt.cabocha', mode='w', encoding='utf-8') as of:
+with open(opath+'corpas02.txt.cabocha', mode='w', encoding='utf-8') as fo:
     of.writelines(list_corpas)

@@ -1,9 +1,7 @@
 # 係り元の文節と係り先の文節のテキストをタブ区切り形式ですべて抽出せよ．
 # ただし，句読点などの記号は出力しないようにせよ．
-import sys, io, os, re
 import pprint
 import CaboCha
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

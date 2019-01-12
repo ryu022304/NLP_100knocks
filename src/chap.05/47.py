@@ -6,12 +6,10 @@
 # ・述語に係る文節が複数ある場合は，すべての項をスペース区切りで並べる（助詞の並び順と揃えよ）
 # 例えば「別段くるにも及ばんさと、主人は手紙に返事をする。」という文から，
 # 以下の出力が得られるはずである．
-import sys, io, os, re
 import pprint
 import CaboCha
 import pydot
 import pydotplus
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -57,7 +55,7 @@ class Chunk():
 
     def hasSahen(self):
         return any([morph.pos1 == 'サ変接続' for morph in self.morphs])
-        
+
     def __str__(self):
         return 'surface:[{}] dst:[{}] srcs:{}'.format(' , '.join([str(morph.surface) for morph in self.morphs]), self.dst, self.srcs)
 
@@ -122,5 +120,5 @@ for c in chunks:
                 list_corpas.append('{}\t{}\t{}\n'.format(verb, ' '.join(list_joshi_s), ' '.join(list_setsu)))
 #print(list_corpas)
 
-with open(opath+'corpas03.txt.cabocha', mode='w', encoding='utf-8') as of:
-    of.writelines(list_corpas)
+with open(opath+'corpas03.txt.cabocha', mode='w', encoding='utf-8') as fo:
+    fo.writelines(list_corpas)

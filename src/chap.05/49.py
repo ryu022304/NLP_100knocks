@@ -10,12 +10,10 @@
 #   文節kの内容を"|"で連結して表示
 # 例えば，「吾輩はここで始めて人間というものを見た。」という文（neko.txt.cabochaの8文目）
 # から，次のような出力が得られるはずである．
-import sys, io, os, re
 import pprint
 import CaboCha
 import pydot
 import pydotplus
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -117,19 +115,15 @@ def makeChunk():
     return list_sentence
 
 chunks = makeChunk()
-# 結果ファイル作成
-with open(opath+'arrow.txt', mode='w', encoding='utf-8') as out_file:
-    # 1文ずつリスト作成
-    for chunks in chunks:
+pprint.pprint(chunks)
 
-        # 名詞を含むchunkに限定した、chunksにおけるインデックスのリストを作成
+with open(opath+'49.txt', mode='w', encoding='utf-8') as fo:
+    for chunks in chunks:
         indexs_noun = [i for i in range(len(chunks)) if chunks[i].hasNoun]
 
-        # 2つ以上ある？
         if len(indexs_noun) < 2:
             continue
 
-        # 名詞を含むchunkの組み合わせを総当りでチェック
         for i, index_x in enumerate(indexs_noun[:-1]):
             for index_y in indexs_noun[i + 1:]:
 
@@ -160,39 +154,39 @@ with open(opath+'arrow.txt', mode='w', encoding='utf-8') as out_file:
                 if index_dup == -1:
 
                     # XからYにぶつかるパターン
-                    out_file.write(chunks[index_x].noun_masked_surface('X'))
+                    fo.write(chunks[index_x].noun_masked_surface('X'))
                     dst = chunks[index_x].dst
                     while dst != -1:
                         if dst == index_y:
-                            out_file.write(
+                            fo.write(
                                     ' -> ' + chunks[dst].noun_masked_surface('Y', True))
                             break
                         else:
-                            out_file.write(
+                            fo.write(
                                     ' -> ' + chunks[dst].joinMorph())
                         dst = chunks[dst].dst
-                    out_file.write('\n')
+                    fo.write('\n')
 
                 else:
 
                     # 経路上の共通のchunkでぶつかるパターン
 
                     # Xからぶつかる手前までを出力
-                    out_file.write(chunks[index_x].noun_masked_surface('X'))
+                    fo.write(chunks[index_x].noun_masked_surface('X'))
                     dst = chunks[index_x].dst
                     while dst != index_dup:
-                        out_file.write(' -> ' + chunks[dst].joinMorph())
+                        fo.write(' -> ' + chunks[dst].joinMorph())
                         dst = chunks[dst].dst
-                    out_file.write(' | ')
+                    fo.write(' | ')
 
                     # Yからぶつかる手前までを出力
-                    out_file.write(chunks[index_y].noun_masked_surface('Y'))
+                    fo.write(chunks[index_y].noun_masked_surface('Y'))
                     dst = chunks[index_y].dst
                     while dst != index_dup:
-                        out_file.write(' -> ' + chunks[dst].joinMorph())
+                        fo.write(' -> ' + chunks[dst].joinMorph())
                         dst = chunks[dst].dst
-                    out_file.write(' | ')
+                    fo.write(' | ')
 
                     # ぶつかったchunkを出力
-                    out_file.write(chunks[index_dup].joinMorph())
-                    out_file.write('\n')
+                    fo.write(chunks[index_dup].joinMorph())
+                    fo.write('\n')

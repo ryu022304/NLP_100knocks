@@ -1,9 +1,7 @@
 # 名詞を含む文節が，動詞を含む文節に係るとき，これらをタブ区切り形式で抽出せよ．
 # ただし，句読点などの記号は出力しないようにせよ．
-import sys, io, os, re
 import pprint
 import CaboCha
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
