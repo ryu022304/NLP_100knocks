@@ -1,11 +1,8 @@
 # KVSを用い，アーティスト名（name）からタグと被タグ数（タグ付けされた回数）のリストを
 # 検索するためのデータベースを構築せよ．さらに，ここで構築したデータベースを用い，
 # アーティスト名からタグと被タグ数を検索せよ．
-import sys, io, os, re
-import pprint
 import redis
-import gzip, json
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+import gzip
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

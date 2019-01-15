@@ -1,10 +1,7 @@
 # Key-Value-Store (KVS) を用い，アーティスト名（name）から活動場所（area）を
 # 検索するためのデータベースを構築せよ．
-import sys, io, os, re
-import pprint
 import redis
 import gzip, json
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

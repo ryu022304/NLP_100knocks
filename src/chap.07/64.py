@@ -1,10 +1,7 @@
 # アーティスト情報（artist.json.gz）をデータベースに登録せよ．さらに，
 # 次のフィールドでインデックスを作成せよ: name, aliases.name, tags.value, rating.value
-import sys, io, os, re
-import pprint
 import gzip, json
 from pymongo import MongoClient
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

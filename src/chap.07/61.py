@@ -1,9 +1,6 @@
 # 60で構築したデータベースを用い，特定の（指定された）アーティストの活動場所を取得せよ．
-import sys, io, os, re
-import pprint
 import redis
-import gzip, json
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+import gzip
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
