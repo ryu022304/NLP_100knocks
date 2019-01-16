@@ -1,19 +1,8 @@
 # 73で学習したロジスティック回帰モデルを用い，与えられた文の極性ラベル
 # （正例なら"+1"，負例なら"-1"）と，その予測確率を計算するプログラムを実装せよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
 from nltk.stem.porter import PorterStemmer as PS
-import numpy as np
-import pickle
 from sklearn.feature_extraction.text import CountVectorizer as CV
-from sklearn.feature_extraction.text import TfidfTransformer as TT
-from sklearn.feature_extraction.text import TfidfVectorizer as TV
-from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import make_pipeline
 
 ipath = '../../data/input/'
 opath = '../../data/output/'

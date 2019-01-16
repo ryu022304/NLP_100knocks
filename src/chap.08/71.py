@@ -1,9 +1,7 @@
 # 英語のストップワードのリスト（ストップリスト）を適当に作成せよ．さらに，
 # 引数に与えられた単語（文字列）がストップリストに含まれている場合は真，
 # それ以外は偽を返す関数を実装せよ．さらに，その関数に対するテストを記述せよ．
-import sys, io, os, re
-import random
-#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 # ストップワードのリストは下記URLからダウンロードした
 # http://xpo6.com/download-stop-word-list/
 

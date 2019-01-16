@@ -3,9 +3,7 @@
 # 2. rt-polarity.negの各行の先頭に"-1 "という文字列を追加する（極性ラベル"-1"とスペースに続けて否定的な文の内容が続く）
 # 3. 上述1と2の内容を結合（concatenate）し，行をランダムに並び替える
 # sentiment.txtを作成したら，正例（肯定的な文）の数と負例（否定的な文）の数を確認せよ．
-import sys, io, os, re
 import random
-#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
