@@ -1,21 +1,9 @@
 # 76-77の実験では，学習に用いた事例を評価にも用いたため，正当な評価とは言えない．
 # すなわち，分類器が訓練事例を丸暗記する際の性能を評価しており，モデルの汎化性能を測定していない．
 # そこで，5分割交差検定により，極性分類の正解率，適合率，再現率，F1スコアを求めよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
 from nltk.stem.porter import PorterStemmer as PS
-import numpy as np
-import pickle
 from sklearn.feature_extraction.text import CountVectorizer as CV
-from sklearn.feature_extraction.text import TfidfTransformer as TT
-from sklearn.feature_extraction.text import TfidfVectorizer as TV
-from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 

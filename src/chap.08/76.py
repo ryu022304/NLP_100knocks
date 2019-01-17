@@ -1,19 +1,8 @@
 # 学習データに対してロジスティック回帰モデルを適用し，正解のラベル，
 # 予測されたラベル，予測確率をタブ区切り形式で出力せよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
 from nltk.stem.porter import PorterStemmer as PS
-import numpy as np
-import pickle
 from sklearn.feature_extraction.text import CountVectorizer as CV
-from sklearn.feature_extraction.text import TfidfTransformer as TT
-from sklearn.feature_extraction.text import TfidfVectorizer as TV
-from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import make_pipeline
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
