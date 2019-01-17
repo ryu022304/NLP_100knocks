@@ -1,19 +1,8 @@
 # ロジスティック回帰モデルの分類の閾値を変化させることで，適合率-再現率グラフを描画せよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
-from nltk.stem.porter import PorterStemmer as PS
 import numpy as np
-import pickle
+from nltk.stem.porter import PorterStemmer as PS
 from sklearn.feature_extraction.text import CountVectorizer as CV
-from sklearn.feature_extraction.text import TfidfTransformer as TT
-from sklearn.feature_extraction.text import TfidfVectorizer as TV
-from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from sklearn.metrics import precision_recall_curve
@@ -70,5 +59,5 @@ with open(opath+"sentiment.txt", encoding='cp1252') as f:
     plt.xlabel('Precision')
     plt.ylabel('Recall')
 
-    plt.show()
     plt.savefig(opath+'79.png')
+    plt.show()
