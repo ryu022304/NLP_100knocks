@@ -5,14 +5,12 @@
 # ・トークンの先頭と末尾に出現する次の文字を削除: .,!?;:()[]'"
 # ・空文字列となったトークンは削除
 # 以上の処理を適用した後，トークンをスペースで連結してファイルに保存せよ．
-import sys, io, os, re
-import pprint
 import bz2
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
 
-with bz2.open(ipath+'enwiki-20150112-400-r100-10576.txt.bz2', 'rt') as fi, open(opath+'token.txt',mode='a',encoding='utf-8') as fw:
+with bz2.open(ipath+'enwiki-20150112-400-r100-10576.txt.bz2', 'rt') as fi, open(opath+'80.txt',mode='a',encoding='utf-8') as fo:
     for line in fi:
         tokens = []
         if len(line) > 0:
@@ -20,4 +18,4 @@ with bz2.open(ipath+'enwiki-20150112-400-r100-10576.txt.bz2', 'rt') as fi, open(
                 tokens.append(str(word).strip('.,!?;:()[]\'"'))
         else:
             continue
-        fw.write(' '.join(tokens)+'\n')
+        fo.write(' '.join(tokens)+'\n')

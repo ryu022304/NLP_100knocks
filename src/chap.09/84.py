@@ -5,7 +5,6 @@
 # 呼ばれる統計量である．なお，行列Xの行数・列数は数百万オーダとなり，行列のすべての
 # 要素を主記憶上に載せることは無理なので注意すること．
 # 幸い，行列Xのほとんどの要素は0になるので，非0の要素だけを書き出せばよい．
-import sys, io, os, re
 import random
 import pprint
 import collections
@@ -17,7 +16,10 @@ from scipy import sparse, io
 ipath = '../../data/input/'
 opath = '../../data/output/'
 
-with open(opath+'83_tc.txt', encoding='utf-8') as ftc,open(opath+'83_ta.txt', encoding='utf-8') as fta,open(opath+'83_ac.txt', encoding='utf-8') as fac,open(opath+'83_fn.txt', encoding='utf-8') as fn:
+with open(opath+'83_tc.txt', encoding='utf-8') as ftc,\
+open(opath+'83_ta.txt', encoding='utf-8') as fta,\
+open(opath+'83_ac.txt', encoding='utf-8') as fac,\
+open(opath+'83_fn.txt', encoding='utf-8') as fn:
 
     lines_ta = fta.readlines()
     dic_ta = {}
