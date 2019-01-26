@@ -5,11 +5,8 @@
 # 呼ばれる統計量である．なお，行列Xの行数・列数は数百万オーダとなり，行列のすべての
 # 要素を主記憶上に載せることは無理なので注意すること．
 # 幸い，行列Xのほとんどの要素は0になるので，非0の要素だけを書き出せばよい．
-import random
-import pprint
 import collections
 import math
-import numpy as np
 import pickle
 from scipy import sparse, io
 
@@ -27,7 +24,7 @@ open(opath+'83_fn.txt', encoding='utf-8') as fn:
     for i,line in enumerate(lines_ta):
         word = line.strip('\n').split('\t')[0]
         num = int(line.strip('\n').split('\t')[1])
-        dic_ta[word] = int(num)
+        dic_ta[word] = num
         index_ta[word] = i
 
     lines_ac = fac.readlines()
@@ -39,7 +36,7 @@ open(opath+'83_fn.txt', encoding='utf-8') as fn:
         dic_ac[word] = int(num)
         index_ac[word] = j
 
-    #Xtc = np.zeros((len(dic_ta),len(dic_ac)))
+    # 疎行列(要素のほとんどが0の行列)の作成(単語数*文脈語数)
     Xtc = sparse.lil_matrix((len(dic_ta), len(dic_ac)))
     N = int(fn.readline())
 
