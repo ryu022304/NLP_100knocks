@@ -11,6 +11,9 @@ opath = '../../data/output/'
 func_t_c = []
 func_t_asta = []
 func_asta_c = []
+count_f_t_c = collections.Counter()
+count_f_t_a = collections.Counter()
+count_f_a_c = collections.Counter()
 
 with open(opath+'82.txt', encoding='utf-8') as f,\
 open(opath+'83_fn.txt', mode='w',encoding='utf-8') as fn:
@@ -21,20 +24,29 @@ open(opath+'83_fn.txt', mode='w',encoding='utf-8') as fn:
         func_t_c.append(line.strip('\n'))
         func_t_asta.append(words[0])
         func_asta_c.append(words[1])
+        if i % 1000000 == 0:
+            count_f_t_c.update(func_t_c)
+            count_f_t_a.update(func_t_asta)
+            count_f_a_c.update(func_asta_c)
+            func_t_c = []
+            func_t_asta = []
+            func_asta_c = []
+
+    count_f_t_c.update(func_t_c)
+    count_f_t_a.update(func_t_asta)
+    count_f_a_c.update(func_asta_c)
     N = i
+    print(N)
     fn.write(str(N))
 
 with open(opath+'83_tc.txt',mode='a', encoding='utf-8') as ftc:
-    print('test')
-    count_f_t_c = collections.Counter(func_t_c)
     for k,v in count_f_t_c.most_common():
-        print(k,v)
         ftc.write('{}\t{}\n'.format(k,v))
+
 with open(opath+'83_ta.txt', mode='a',encoding='utf-8') as fta:
-    count_f_t_a = collections.Counter(func_t_asta)
     for k,v in count_f_t_a.most_common():
         fta.write('{}\t{}\n'.format(k,v))
+
 with open(opath+'83_ac.txt', mode='a',encoding='utf-8') as fac:
-    count_f_a_c = collections.Counter(func_asta_c)
     for k,v in count_f_a_c.most_common():
         fac.write('{}\t{}\n'.format(k,v))
