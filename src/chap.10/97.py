@@ -1,16 +1,8 @@
 # 96の単語ベクトルに対して，k-meansクラスタリングをクラスタ数k=5として実行せよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
-import math
 import numpy as np
 import pickle
-from scipy import sparse, io
-from scipy.spatial.distance import cosine
-import sklearn.decomposition
+import pprint
 from gensim.models import word2vec
-import gensim
 from sklearn.cluster import KMeans
 
 ipath = '../../data/input/'

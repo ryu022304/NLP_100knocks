@@ -1,16 +1,6 @@
 # word2vecの学習結果から，国名に関するベクトルのみを抜き出せ．
-import sys, io, os, re
-import random
-import pprint
-import collections
-import math
-import numpy as np
 import pickle
-from scipy import sparse, io
-from scipy.spatial.distance import cosine
-import sklearn.decomposition
 from gensim.models import word2vec
-import gensim
 
 ipath = '../../data/input/'
 opath = '../../data/output/'
@@ -27,7 +17,6 @@ with open(ipath+'country.csv',encoding='utf-8') as fc:
         if country in model_vec:
             country_list.append(model_vec[country])
             country_name_list.append(country)
-
 
 with open(opath+'96.txt', 'wb') as f:
     pickle.dump(country_list, f)

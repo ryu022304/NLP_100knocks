@@ -1,16 +1,8 @@
 # The WordSimilarity-353 Test Collectionの評価データを入力とし，1列目と2列目の単語の類似度を計算し，
 # 各行の末尾に類似度の値を追加するプログラムを作成せよ．
 # このプログラムを85で作成した単語ベクトル，90で作成した単語ベクトルに対して適用せよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
-import math
-import numpy as np
 import pickle
-from scipy import sparse, io
-from scipy.spatial.distance import cosine
-import sklearn.decomposition
+from scipy import io
 from gensim.models import word2vec
 import gensim
 
@@ -30,7 +22,9 @@ def sim_word2vec(word1, word2):
 def sim_vector(word1, word2):
     return 1 - cosine(Xtc_300[index_ta[word1]], Xtc_300[index_ta[word2]])
 
-with open(ipath+'wordsim353/combined.csv',encoding='utf-8') as f,open(opath+'94_90.txt',mode = 'a',encoding='utf-8') as fo_90, open(opath+'94_85.txt',mode = 'a',encoding='utf-8') as fo_85:
+with open(ipath+'wordsim353/combined.csv',encoding='utf-8') as f,\
+    open(opath+'94_90.txt',mode = 'a',encoding='utf-8') as fo_90,\
+    open(opath+'94_85.txt',mode = 'a',encoding='utf-8') as fo_85:
 
     lines = f.readlines()
     for line in lines:

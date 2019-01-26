@@ -1,16 +1,10 @@
 # 91で作成した評価データの各事例に対して，vec(2列目の単語) - vec(1列目の単語) + vec(3列目の単語)を計算し，
 # そのベクトルと類似度が最も高い単語と，その類似度を求めよ．求めた単語と類似度は，各事例の末尾に追記せよ．
 # このプログラムを85で作成した単語ベクトル，90で作成した単語ベクトルに対して適用せよ．
-import sys, io, os, re
-import random
-import pprint
-import collections
-import math
 import numpy as np
 import pickle
-from scipy import sparse, io
+from scipy import io
 from scipy.spatial.distance import cosine
-import sklearn.decomposition
 from gensim.models import word2vec
 
 ipath = '../../data/input/'
@@ -28,10 +22,12 @@ def sim_word2vec(posi1, posi2, nega, n=10):
     fo_90.write('{} - {} + {} = {} {}\n'.format(posi1,nega,posi2,result[0][0],result[0][1]))
 
 def sim_vector(posi1, posi2, nega):
+    # warningの非表示
+    _ = np.seterr(all="ignore")
+
     matrix= Xtc_300[index_ta[posi1]] - Xtc_300[index_ta[nega]] + Xtc_300[index_ta[posi2]]
 
     dic_sim = {}
-    # 確実に冗長なのでどうにかしたい
     for word,index in index_ta.items():
         matrix_sim = Xtc_300[index]
         dic_sim[word] = 1 - cosine(matrix, matrix_sim)
@@ -41,7 +37,9 @@ def sim_vector(posi1, posi2, nega):
         fo_85.write('{} - {} + {} = {} {}\n'.format(posi1,nega,posi2,word,sim))
         print('{} - {} + {} = {} {}\n'.format(posi1,nega,posi2,word,sim))
 
-with open(opath+'91.txt',encoding='utf-8') as f,open(opath+'92_90.txt',mode='a',encoding='utf-8') as fo_90, open(opath+'92_85.txt',mode='a',encoding='utf-8') as fo_85:
+with open(opath+'91.txt',encoding='utf-8') as f,\
+    open(opath+'92_90.txt',mode='a',encoding='utf-8') as fo_90,\
+    open(opath+'92_85.txt',mode='a',encoding='utf-8') as fo_85:
     lines = f.readlines()
     for line in lines:
         words = line.split()
